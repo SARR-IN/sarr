@@ -26,8 +26,450 @@
         <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
  
     </head>
+ <style>
+  /***** Wrapper *****/
+ 
+.wrapper {
+    display: block;
+}
+ 
+/***** Sidebar *****/
+ 
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -255px;
+    z-index: 999;
+    background: #333;
+    color: #fff;
+    transition: all .3s;
+    box-shadow: 3px 3px 3px rgba(51, 51, 51, 0.5);
+    text-align: left;
+}
+ 
+.sidebar.active {
+    left: 0;
+}
+ 
+/***** Content *****/
+ 
+.content {
+    width: 100%;
+    transition: all 0.3s;
+}
+  /***** Dark overlay *****/
+ 
+.overlay {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(51, 51, 51, 0.7);
+    z-index: 998;
+    opacity: 0;
+    transition: all .5s ease-in-out;
+}
+ 
+.overlay.active {
+    display: block;
+    opacity: 1;
+}
+  .open-menu {
+    position: fixed;
+    top: 20px;
+    left: 10px;
+    z-index: 997;
+    box-shadow: 3px 3px 3px rgba(51, 51, 51, 0.2);
+}
+ 
+.open-menu.btn-customized,
+.open-menu.btn-customized:hover, 
+.open-menu.btn-customized:active, 
+.open-menu.btn-customized:focus, 
+.open-menu.btn-customized:active:focus, 
+.open-menu.btn-customized.active:focus,
+.open-menu.btn-customized.btn.btn-primary:not(:disabled):not(.disabled):active,
+.open-menu.btn-customized.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
+    box-shadow: 3px 3px 3px rgba(51, 51, 51, 0.2);
+}
+ 
+/* Style for all buttons with the class btn-customized */
+ 
+a.btn-customized {
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: .75rem 1.5rem;
+    background: #f35b3f;
+    border: 0;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 300;
+    color: #fff;
+    box-shadow: none;
+}
+ 
+a.btn-customized:hover, 
+a.btn-customized:active, 
+a.btn-customized:focus, 
+a.btn-customized:active:focus, 
+a.btn-customized.active:focus,
+a.btn-customized.btn.btn-primary:not(:disabled):not(.disabled):active,
+a.btn-customized.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
+    outline: 0;
+    background: #cd533d; /* for browsers that don't recognize rgba */
+    background: rgba(243, 91, 63, 0.7);
+    border: 0;
+    color: #fff;
+    box-shadow: none;
+}
+  .dismiss {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    transition: all .3s;
+    background: #444;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 35px;
+    cursor: pointer;
+}
+ 
+.dismiss:hover,
+.dismiss:focus {
+    background: #555;
+    color: #fff;
+}
+  .sidebar .logo {
+    padding: 40px 20px;
+    border-bottom: 1px solid #444;
+    transition: all .3s;
+}
+ 
+.sidebar .logo a {
+    display: inline-block;
+    width: 172px;
+    height: 34px;
+    background: url(../img/logo.png) left top no-repeat;
+    border: 0;
+    text-indent: -999999px;
+}
+  .sidebar ul.menu-elements {
+    padding: 10px 0;
+    border-bottom: 1px solid #444;
+    transition: all .3s;
+}
+ 
+.sidebar ul li a {
+    display: block;
+    padding: 10px 20px;
+    border: 0;
+    color: #fff;
+}
+ 
+.sidebar ul li a:hover,
+.sidebar ul li a:focus,
+.sidebar ul li.active > a:hover,
+.sidebar ul li.active > a:focus {
+    outline: 0;
+    background: #555;
+    color: #fff;
+}
+ 
+.sidebar ul li a i {
+    margin-right: 5px;
+}
+ 
+.sidebar ul li.active > a,
+a[aria-expanded="true"] {
+    background: #444;
+    color: #fff;
+}
+ 
+.sidebar ul ul a {
+    background: #444;
+    padding-left: 30px;
+    font-size: 14px;
+}
+ 
+.sidebar ul ul li.active > a {
+    background: #555;
+}
+ 
+.sidebar a[data-toggle="collapse"] {
+    position: relative;
+}
+ 
+.sidebar .dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+  .sidebar .to-top {
+    padding: 20px;
+    text-align: center;
+}
+ 
+a.btn-customized-3 {
+    display: inline-block;
+    width: 100%;
+    margin: 0;
+    padding: .75rem 1.5rem;
+    background: #444;
+    border: 0;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 300;
+    color: #fff;
+    box-shadow: none;
+}
+ 
+a.btn-customized-3:hover, 
+a.btn-customized-3:active, 
+a.btn-customized-3:focus, 
+a.btn-customized-3:active:focus, 
+a.btn-customized-3.active:focus,
+a.btn-customized-3.btn.btn-primary:not(:disabled):not(.disabled):active,
+a.btn-customized-3.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
+    outline: 0;
+    background: #555;
+    border: 0;
+    color: #fff;
+    box-shadow: none;
+}
+ 
+a.btn-customized-3 i {
+    margin-right: 5px;
+}
+  .sidebar .dark-light-buttons {
+    padding: 10px 20px 30px 20px;
+    text-align: center;
+}
+ 
+a.btn-customized-4 {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    margin: 0 3px;
+    padding: 0;
+    background: #444;
+    border: 0;
+    border-radius: 50%;
+    font-size: 16px;
+    font-weight: 300;
+    color: #fff;
+    box-shadow: none;
+    text-indent: -999999px;
+}
+ 
+a.btn-customized-4.btn-customized-dark {
+    background: #222;
+}
+ 
+a.btn-customized-4.btn-customized-light {
+    background: #fff;
+}
+ 
+a.btn-customized-4.btn-customized-dark:hover, 
+a.btn-customized-4.btn-customized-dark:active, 
+a.btn-customized-4.btn-customized-dark:focus, 
+a.btn-customized-4.btn-customized-dark:active:focus, 
+a.btn-customized-4.btn-customized-dark.active:focus,
+a.btn-customized-4.btn-customized-dark.btn.btn-primary:not(:disabled):not(.disabled):active,
+a.btn-customized-4.btn-customized-dark.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
+    outline: 0;
+    background: #555;
+    border: 0;
+    color: #fff;
+    box-shadow: none;
+}
+ 
+a.btn-customized-4.btn-customized-light:hover, 
+a.btn-customized-4.btn-customized-light:active, 
+a.btn-customized-4.btn-customized-light:focus, 
+a.btn-customized-4.btn-customized-light:active:focus, 
+a.btn-customized-4.btn-customized-light.active:focus,
+a.btn-customized-4.btn-customized-light.btn.btn-primary:not(:disabled):not(.disabled):active,
+a.btn-customized-4.btn-customized-light.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
+    outline: 0;
+    background: #555;
+    border: 0;
+    color: #fff;
+    box-shadow: none;
+}
+  
+ </style>
  
     <body>
+     <body>
+ 
+    <!-- Wrapper -->
+    <div class="wrapper">
+ 
+    </div>
+    <!-- End wrapper -->
+ 
+<!-- ... -->
+      <!-- Wrapper -->
+<div class="wrapper">
+ 
+    <!-- Sidebar -->
+    <nav class="sidebar">
+ 
+    </nav>
+    <!-- End sidebar -->
+ 
+    <!-- Content -->
+    <div class="content">
+ 
+    </div>
+    <!-- End content -->
+ 
+</div>
+<!-- End wrapper -->
+      <!-- Sidebar -->
+<nav class="sidebar">
+ 
+    <!-- close sidebar menu -->
+    <div class="dismiss">
+        <i class="fas fa-arrow-left"></i>
+    </div>
+ 
+    <div class="logo">
+        <h3><a href="index.html">Bootstrap 4 Template with Sidebar Menu</a></h3>
+    </div>
+ 
+    <ul class="list-unstyled menu-elements">
+        <li class="active">
+            <a class="scroll-link" href="#top-content"><i class="fas fa-home"></i> Home</a>
+        </li>
+        <li>
+            <a class="scroll-link" href="#section-1"><i class="fas fa-cog"></i> What we do</a>
+        </li>
+        <li>
+            <a class="scroll-link" href="#section-2"><i class="fas fa-user"></i> About us</a>
+        </li>
+        <li>
+            <a class="scroll-link" href="#section-5"><i class="fas fa-pencil-alt"></i> Portfolio</a>
+        </li>
+        <li>
+            <a class="scroll-link" href="#section-6"><i class="fas fa-envelope"></i> Contact us</a>
+        </li>
+        <li>
+            <a href="#otherSections" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button" aria-controls="otherSections">
+                <i class="fas fa-sync"></i>Other sections
+            </a>
+            <ul class="collapse list-unstyled" id="otherSections">
+                <li>
+                    <a class="scroll-link" href="#section-3">Our projects</a>
+                </li>
+                <li>
+                    <a class="scroll-link" href="#section-4">We think that...</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+ 
+    <div class="to-top">
+        <a class="btn btn-primary btn-customized-3" href="#" role="button">
+            <i class="fas fa-arrow-up"></i> Top
+        </a>
+    </div>
+ 
+    <div class="dark-light-buttons">
+        <a class="btn btn-primary btn-customized-4 btn-customized-dark" href="#" role="button">Dark</a>
+        <a class="btn btn-primary btn-customized-4 btn-customized-light" href="#" role="button">Light</a>
+    </div>
+ 
+</nav>
+<!-- End sidebar -->
+      <!-- Wrapper -->
+<div class="wrapper">
+ 
+    <!-- Sidebar -->
+    <nav class="sidebar">
+ 
+        <!-- close sidebar menu -->
+        <div class="dismiss">
+            <i class="fas fa-arrow-left"></i>
+        </div>
+ 
+        <div class="logo">
+            <h3><a href="index.html">Bootstrap 4 Template with Sidebar Menu</a></h3>
+        </div>
+ 
+        <ul class="list-unstyled menu-elements">
+            <li class="active">
+                <a class="scroll-link" href="#top-content"><i class="fas fa-home"></i> Home</a>
+            </li>
+            <li>
+                <a class="scroll-link" href="#section-1"><i class="fas fa-cog"></i> What we do</a>
+            </li>
+            <li>
+                <a class="scroll-link" href="#section-2"><i class="fas fa-user"></i> About us</a>
+            </li>
+            <li>
+                <a class="scroll-link" href="#section-5"><i class="fas fa-pencil-alt"></i> Portfolio</a>
+            </li>
+            <li>
+                <a class="scroll-link" href="#section-6"><i class="fas fa-envelope"></i> Contact us</a>
+            </li>
+            <li>
+                <a href="#otherSections" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button" aria-controls="otherSections">
+                    <i class="fas fa-sync"></i>Other sections
+                </a>
+                <ul class="collapse list-unstyled" id="otherSections">
+                    <li>
+                        <a class="scroll-link" href="#section-3">Our projects</a>
+                    </li>
+                    <li>
+                        <a class="scroll-link" href="#section-4">We think that...</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+ 
+        <div class="to-top">
+            <a class="btn btn-primary btn-customized-3" href="#" role="button">
+                <i class="fas fa-arrow-up"></i> Top
+            </a>
+        </div>
+ 
+        <div class="dark-light-buttons">
+            <a class="btn btn-primary btn-customized-4 btn-customized-dark" href="#" role="button">Dark</a>
+            <a class="btn btn-primary btn-customized-4 btn-customized-light" href="#" role="button">Light</a>
+        </div>
+ 
+    </nav>
+    <!-- End sidebar -->
+ 
+    <!-- Dark overlay -->
+    <div class="overlay"></div>
+ 
+    <!-- Content -->
+    <div class="content">
+ 
+        <!-- open sidebar menu -->
+        <a class="btn btn-primary btn-customized open-menu" href="#" role="button">
+            <i class="fas fa-align-left"></i> <span>Menu</span>
+        </a>
+ 
+        <!-- ... -->
+ 
+        <!-- here is the page's content (not shown here) -->
+ 
+        <!-- ... -->
+ 
+    </div>
+    <!-- End content -->
+ 
+</div>
+<!-- End wrapper -->
  <!-- Javascript -->
         <script src="assets/js/jquery-3.3.1.min.js"></script>
         <script src="assets/js/jquery-migrate-3.0.0.min.js"></script>
@@ -38,6 +480,107 @@
         <script src="assets/js/jquery.waypoints.min.js"></script>
         <script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
         <script src="assets/js/scripts.js"></script>
+      <script>
+       jQuery(document).ready(function() {
+ 
+    $('.dismiss, .overlay').on('click', function() {
+        $('.sidebar').removeClass('active');
+        $('.overlay').removeClass('active');
+    });
+ 
+    $('.open-menu').on('click', function(e) {
+        e.preventDefault();
+        $('.sidebar').addClass('active');
+        $('.overlay').addClass('active');
+        // close opened sub-menus
+        $('.collapse.show').toggleClass('show');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+    });
+ 
+    /* other code */
+ 
+});
+       
+       /*
+    Navigation
+*/
+$('a.scroll-link').on('click', function(e) {
+    e.preventDefault();
+    scroll_to($(this), 0);
+});
+ 
+function scroll_to(clicked_link, nav_height) {
+    var element_class = clicked_link.attr('href').replace('#', '.');
+    var scroll_to = 0;
+    if(element_class != '.top-content') {
+        element_class += '-container';
+        scroll_to = $(element_class).offset().top - nav_height;
+    }
+    if($(window).scrollTop() != scroll_to) {
+        $('html, body').stop().animate({scrollTop: scroll_to}, 1000);
+    }
+}
+       
+       $('.to-top a').on('click', function(e) {
+    e.preventDefault();
+    if($(window).scrollTop() != 0) {
+        $('html, body').stop().animate({scrollTop: 0}, 1000);
+    }
+});
+       
+       $('a.btn-customized-dark').on('click', function(e) {
+    e.preventDefault();
+    $('.sidebar').removeClass('light');
+});
+ 
+$('a.btn-customized-light').on('click', function(e) {
+    e.preventDefault();
+    $('.sidebar').addClass('light');
+});
+       
+       $('.section-container').waypoint(function(direction) {
+    if (direction === 'down') {
+        $('.menu-elements li').removeClass('active');
+        $('.menu-elements a[href="#' + this.element.id + '"]').parents('li').addClass('active');
+    }
+},
+{
+    offset: '0'
+});
+ 
+$('.section-container').waypoint(function(direction) {
+    if (direction === 'up') {
+        $('.menu-elements li').removeClass('active');
+        $('.menu-elements a[href="#' + this.element.id + '"]').parents('li').addClass('active');
+    }
+},
+{
+    offset: '-5'
+});
+       $('.sidebar').mCustomScrollbar({
+    theme: "minimal-dark"
+});
+       
+       @media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (   min--moz-device-pixel-ratio: 2),
+only screen and (     -o-min-device-pixel-ratio: 2/1),
+only screen and (        min-device-pixel-ratio: 2),
+only screen and (                min-resolution: 192dpi),
+only screen and (                min-resolution: 2dppx) {
+ 
+    .sidebar .logo a {
+        background-image: url(../img/logo@2x.png) !important;
+        background-repeat: no-repeat !important;
+        background-size: 172px 34px !important;
+    }
+ 
+    .sidebar.light .logo a {
+        background-image: url(../img/logo-dark@2x.png) !important;
+    }
+ 
+}
+      </script>
  
     </body>
  
