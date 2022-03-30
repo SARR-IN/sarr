@@ -3,15 +3,12 @@
     
   </head>
   <style>
-    @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800);
-@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
-.snip1529 {
-  background-color: #000000;
+  @import url(https://fonts.googleapis.com/css?family=Lato:400,600,700);
+.snip1527 {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
   color: #ffffff;
-  font-family: 'Open Sans', Arial, sans-serif;
+  font-family: 'Lato', Arial, sans-serif;
   font-size: 16px;
-  line-height: 1.6em;
   margin: 10px;
   max-width: 310px;
   min-width: 250px;
@@ -21,32 +18,47 @@
   width: 100%;
 }
 
-.snip1529 * {
+.snip1527 * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   -webkit-transition: all 0.25s ease;
   transition: all 0.25s ease;
 }
 
-.snip1529 img {
+.snip1527 img {
   max-width: 100%;
   vertical-align: top;
   position: relative;
-  opacity: 0.75;
 }
 
-.snip1529 figcaption {
+.snip1527 figcaption {
   padding: 25px 20px 25px;
   position: absolute;
   bottom: 0;
   z-index: 1;
 }
 
-.snip1529 .date {
+.snip1527 figcaption:before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #700877;
+  content: '';
+  background: -moz-linear-gradient(90deg, #700877 0%, #ff2759 100%, #ff2759 100%);
+  background: -webkit-linear-gradient(90deg, #700877 0%, #ff2759 100%, #ff2759 100%);
+  background: linear-gradient(90deg, #700877 0%, #ff2759 100%, #ff2759 100%);
+  opacity: 0.8;
+  z-index: -1;
+}
+
+.snip1527 .date {
   background-color: #fff;
-  color: #333;
+  border-radius: 50%;
+  color: #700877;
   font-size: 18px;
-  font-weight: 800;
+  font-weight: 700;
   min-height: 48px;
   min-width: 48px;
   padding: 10px 0;
@@ -54,44 +66,38 @@
   right: 15px;
   text-align: center;
   text-transform: uppercase;
-  top: 0;
+  top: -25px;
 }
 
-.snip1529 .date span {
+.snip1527 .date span {
   display: block;
   line-height: 14px;
 }
 
-.snip1529 .date .month {
+.snip1527 .date .month {
   font-size: 11px;
 }
 
-.snip1529 h3,
-.snip1529 p {
+.snip1527 h3,
+.snip1527 p {
   margin: 0;
   padding: 0;
 }
 
-.snip1529 h3 {
-  font-weight: 800;
+.snip1527 h3 {
+  display: inline-block;
+  font-weight: 700;
   letter-spacing: -0.4px;
+  margin-bottom: 5px;
 }
 
-.snip1529 .hover {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  align-items: center;
-  background-color: rgba(236, 188, 46, 0.75);
-  display: flex;
-  font-size: 65px;
-  justify-content: center;
-  opacity: 0;
+.snip1527 p {
+  font-size: 0.8em;
+  line-height: 1.6em;
+  margin-bottom: 0px;
 }
 
-.snip1529 a {
+.snip1527 a {
   left: 0;
   right: 0;
   top: 0;
@@ -100,86 +106,48 @@
   z-index: 1;
 }
 
-.snip1529:hover .hover,
-.snip1529.hover .hover {
-  -webkit-transition-delay: 0.1s;
-  transition-delay: 0.1s;
-  opacity: 1;
+.snip1527:hover img,
+.snip1527.hover img {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
-.snip1529:hover figcaption,
-.snip1529.hover figcaption {
-  opacity: 0;
-}
-
-.snip1529:hover .date,
-.snip1529.hover .date {
-  -webkit-transform: translateY(-100%);
-  transform: translateY(-100%);
-}
-
-
-/* Demo purposes only */
-
-body {
-  background-color: #212121;
-}
   </style>
   <body>
-    <figure class="snip1529">
-  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/pr-sample13.jpg" alt="pr-sample13" />
-  <div class="date"><span class="day">28</span><span class="month">Apr</span></div>
+    <figure class="snip1527">
+  <div class="image"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/pr-sample23.jpg" alt="pr-sample23" /></div>
   <figcaption>
-    <h3>An Abstract Post Heading</h3>
-    <p>Which is worse, that everyone has his price, or that the price is always so low.</p>
-  </figcaption>
-  <div class="hover"><i class="ion-android-open"></i></div>
-  <a href="#"></a>
-</figure>
-<figure class="snip1529 hover"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/pr-sample21.jpg" alt="pr-sample21" />
-  <div class="date"><span class="day">17</span><span class="month">May</span></div>
-  <figcaption>
-    <h3>Down with this sort of thing</h3>
-    <p>I'm killing time while I wait for life to shower me with meaning and happiness.</p>
-  </figcaption>
-  <div class="hover"><i class="ion-android-open"></i></div>
-  <a href="#"></a>
-</figure>
-<figure class="snip1529"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/pr-sample23.jpg" alt="pr-sample23" />
-  <div class="date"><span class="day">08</span><span class="month">June</span></div>
-  <figcaption>
+    <div class="date"><span class="day">28</span><span class="month">Oct</span></div>
     <h3>The World Ended Yesterday</h3>
-    <p>The only skills I have the patience to learn are those that have no real application in life. </p>
+    <p>
+
+      You know what we need, Hobbes? We need an attitude. Yeah, you can't be cool if you don't have an attitude.
+    </p>
   </figcaption>
-  <div class="hover"><i class="ion-android-open"></i></div>
   <a href="#"></a>
 </figure>
-     <figure class="snip1529">
-  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/pr-sample13.jpg" alt="pr-sample13" />
-  <div class="date"><span class="day">28</span><span class="month">Apr</span></div>
+<figure class="snip1527 hover">
+  <div class="image"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/pr-sample24.jpg" alt="pr-sample24" /></div>
   <figcaption>
+    <div class="date"><span class="day">17</span><span class="month">Nov</span></div>
     <h3>An Abstract Post Heading</h3>
-    <p>Which is worse, that everyone has his price, or that the price is always so low.</p>
+    <p>
+
+      Sometimes the surest sign that intelligent life exists elsewhere in the universe is that none of it has tried to contact us.
+    </p>
   </figcaption>
-  <div class="hover"><i class="ion-android-open"></i></div>
   <a href="#"></a>
 </figure>
-<figure class="snip1529 hover"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/pr-sample21.jpg" alt="pr-sample21" />
-  <div class="date"><span class="day">17</span><span class="month">May</span></div>
+<figure class="snip1527">
+  <div class="image"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/pr-sample25.jpg" alt="pr-sample25" /></div>
   <figcaption>
+    <div class="date"><span class="day">01</span><span class="month">Dec</span></div>
     <h3>Down with this sort of thing</h3>
-    <p>I'm killing time while I wait for life to shower me with meaning and happiness.</p>
+    <p>
+
+      I don't need to compromise my principles, because they don't have the slightest bearing on what happens to me anyway.
+    </p>
   </figcaption>
-  <div class="hover"><i class="ion-android-open"></i></div>
-  <a href="#"></a>
-</figure>
-<figure class="snip1529"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/pr-sample23.jpg" alt="pr-sample23" />
-  <div class="date"><span class="day">08</span><span class="month">June</span></div>
-  <figcaption>
-    <h3>The World Ended Yesterday</h3>
-    <p>The only skills I have the patience to learn are those that have no real application in life. </p>
-  </figcaption>
-  <div class="hover"><i class="ion-android-open"></i></div>
   <a href="#"></a>
 </figure>
   </body>
