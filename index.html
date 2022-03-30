@@ -7,12 +7,7 @@
 body {
   font-family: "Lato", sans-serif;
 }
-#mySearch {
-  width: 100%;
-  font-size: 18px;
-  padding: 11px;
-  border: 1px solid #ddd;
-}
+
   
 .sidenav {
   height: 100%;
@@ -86,7 +81,6 @@ body {
 <div class="header" id="myHeader">
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search.." title="Type in a category">
   <a href="#"><i class="fa fa-home"></i> Home</a>
 <!--   <a href="#"><i class="fa fa-client"></i> Client</a> -->
   <a href="#"><i class="fa fa-server"></i> Services</a>
@@ -131,24 +125,7 @@ function myFunction() {
     header.classList.remove("sticky");
   }
 }
-  function myFunction() {
-  // Declare variables
-  var input, filter, ul, li, a, i;
-  input = document.getElementById("mySearch");
-  filter = input.value.toUpperCase();
-  ul = document.getElementById("myMenu");
-  li = ul.getElementsByTagName("li");
 
-  // Loop through all list items, and hide those who don't match the search query
-  for (i = 0; i < li.length; i++) {
-    a = li[i].getElementsByTagName("a")[0];
-    if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-      li[i].style.display = "";
-    } else {
-      li[i].style.display = "none";
-    }
-  }
-}
 
 </script>
    
