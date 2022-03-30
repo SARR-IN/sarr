@@ -51,14 +51,37 @@ body {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
+  /* Style the header */
+.header {
+  padding: 10px 16px;
+  background: #555;
+  color: #f1f1f1;
+}
+
+/* Page content */
+.content {
+  padding: 16px;
+}
+
+/* The sticky class is added to the header with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 102px;
+}
 </style>
 </head>
 <body>
-
+<div class="header" id="myHeader">
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="#"><i class="fa fa-home"></i> Home</a>
-  <a href="#"><i class="fa fa-client"></i> Client</a>
+<!--   <a href="#"><i class="fa fa-client"></i> Client</a> -->
   <a href="#"><i class="fa fa-server"></i> Services</a>
   <a href="#"><i class="fa fa-user"></i> About</a>
   <a href="#"><i class="fa fa-phone"></i> Contact</a>
@@ -69,6 +92,7 @@ body {
   <p>Click on the element below to open the side navigation menu, and push this content to the right.</p> -->
   <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
 </div>
+  </div>
 
 <script>
 function openNav() {
@@ -80,6 +104,24 @@ function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
   document.getElementById("main").style.marginLeft= "0";
 }
+  // When the user scrolls the page, execute myFunction
+window.onscroll = function() {myFunction()};
+
+// Get the header
+var header = document.getElementById("myHeader");
+
+// Get the offset position of the navbar
+var sticky = header.offsetTop;
+
+// Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function myFunction() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add("sticky");
+  } else {
+    header.classList.remove("sticky");
+  }
+}
+
 </script>
    
 </body>
