@@ -3,161 +3,184 @@
     
   </head>
   <style>
-  @import url(https://fonts.googleapis.com/css?family=Lato:400,600,700);
-.snip1527 {
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
-  color: #ffffff;
-  font-family: 'Lato', Arial, sans-serif;
-  font-size: 16px;
-  margin: 10px;
-  max-width: 310px;
-  min-width: 250px;
-  overflow: hidden;
-  position: relative;
-  text-align: left;
-  width: 100%;
-}
-
-.snip1527 * {
-  -webkit-box-sizing: border-box;
+    *, *::before, *::after {
   box-sizing: border-box;
-  -webkit-transition: all 0.25s ease;
-  transition: all 0.25s ease;
 }
 
-.snip1527 img {
-  max-width: 100%;
-  vertical-align: top;
-  position: relative;
+:root {
+  --clr-dark: rgb(27, 37, 46);
+  --br: 0.5em;
 }
 
-.snip1527 figcaption {
-  padding: 25px 20px 25px;
-  position: absolute;
-  bottom: 0;
-  z-index: 1;
+body {
+  font-family: sans-serif;
+  place-items: center;
+  display: grid;
+  background-color: var(--clr-dark);
+  color: #fff;
+  min-height: 100vh;
 }
 
-.snip1527 figcaption:before {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #700877;
-  content: '';
-  background: -moz-linear-gradient(90deg, #700877 0%, #ff2759 100%, #ff2759 100%);
-  background: -webkit-linear-gradient(90deg, #700877 0%, #ff2759 100%, #ff2759 100%);
-  background: linear-gradient(90deg, #700877 0%, #ff2759 100%, #ff2759 100%);
-  opacity: 0.8;
-  z-index: -1;
-}
-
-.snip1527 .date {
-  background-color: #fff;
-  border-radius: 50%;
-  color: #700877;
-  font-size: 18px;
-  font-weight: 700;
-  min-height: 48px;
-  min-width: 48px;
-  padding: 10px 0;
-  position: absolute;
-  right: 15px;
-  text-align: center;
-  text-transform: uppercase;
-  top: -25px;
-}
-
-.snip1527 .date span {
-  display: block;
-  line-height: 14px;
-}
-
-.snip1527 .date .month {
-  font-size: 11px;
-}
-
-.snip1527 h3,
-.snip1527 p {
+h1, h2, h3, p {
   margin: 0;
-  padding: 0;
 }
 
-.snip1527 h3 {
-  display: inline-block;
-  font-weight: 700;
-  letter-spacing: -0.4px;
-  margin-bottom: 5px;
+img {
+  max-width: 100%;
 }
 
-.snip1527 p {
-  font-size: 0.8em;
-  line-height: 1.6em;
-  margin-bottom: 0px;
+.movie {
+  position: relative;
+  width: 25em;
+  cursor: pointer;
 }
 
-.snip1527 a {
+/********************** Front *******************************/
+.front .cover {
+  border-radius: var(--br);
+}
+
+/********************** Back *******************************/
+.back {
+  opacity: 0;
+  display: block;
+  position: absolute;
+  top: 0;
   left: 0;
-  right: 0;
+}
+
+.back .trailer {
+  box-shadow: 0px 20px 15px #000;
+  transform: translateY(-33%);
+  width: 100%;
+  height: 210px;
+  border-top-left-radius: var(--br);
+  border-top-right-radius: var(--br);
+}
+
+.back .title {
+  transform: translateY(-45px);
+  display: flex;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+}
+
+.back .title h3 {
+  color: #79b8f3;
+}
+
+.back .title span {
+  padding-left: 10em;
+}
+
+.back .title .ic-play {
+  padding-right: 1.5em;
+}
+
+.back .description {
+  transform: translateY(-30px);
+  display: flex;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+}
+
+.back .time {
+  display: flex;
+  color: #8197a4;
+  transform: translateY(-10px);
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+}
+
+.back .time span {
+  margin-left: 1em;
+}
+
+.back .time i {
+  margin-left: 1em;
+}
+
+.background {
+  background: var(--clr-dark);
+  position: absolute;
   top: 0;
   bottom: 0;
-  position: absolute;
-  z-index: 1;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  transform: scale(0.2, 0.9);
+  opacity: 0;
+  border-radius: var(--br);
 }
 
-.snip1527:hover img,
-.snip1527.hover img {
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
+/********************** On Hover *******************************/
+.movie:hover .front {
+  opacity: 0;
 }
 
-  </style>
-  <body>
-    <figure class="snip1527">
-  <div class="image"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/pr-sample23.jpg" alt="pr-sample23" /></div>
-  <figcaption>
-    <div class="date"><span class="day">28</span><span class="month">Oct</span></div>
-    <h3>The World Ended Yesterday</h3>
-    <p>
+.movie:hover .back {
+  opacity: 1;
+}
 
-      You know what we need, Hobbes? We need an attitude. Yeah, you can't be cool if you don't have an attitude.
-    </p>
-  </figcaption>
-  <a href="#"></a>
-</figure>
-<figure class="snip1527 hover">
-  <div class="image"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/pr-sample24.jpg" alt="pr-sample24" /></div>
-  <figcaption>
-    <div class="date"><span class="day">17</span><span class="month">Nov</span></div>
-    <h3>An Abstract Post Heading</h3>
-    <p>
+.movie:hover .background {
+  transition: transform ease-in-out, opacity 100ms linear;
+  opacity: 1;
+  transform: scale(1, 1.8) translateY(5%);
+  box-shadow: 0px 0px 15px #000;
+}
 
-      Sometimes the surest sign that intelligent life exists elsewhere in the universe is that none of it has tried to contact us.
-    </p>
-  </figcaption>
-  <a href="#"></a>
-</figure>
-<figure class="snip1527">
-  <div class="image"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/pr-sample25.jpg" alt="pr-sample25" /></div>
-  <figcaption>
-    <div class="date"><span class="day">01</span><span class="month">Dec</span></div>
-    <h3>Down with this sort of thing</h3>
-    <p>
+    </style>
+<body>
+<div class="movie">
 
-      I don't need to compromise my principles, because they don't have the slightest bearing on what happens to me anyway.
-    </p>
-  </figcaption>
-  <a href="#"></a>
-</figure>
-  </body>
+  <div class="prime"></div>
+  <div class="front">
+    <img src="https://raw.githubusercontent.com/patelvinay/Featured-Movies-Card/master/img/movie-cover.jpg" alt="" class="cover">
+  </div>
+
+  <div class="back">
+    <div class="trailer" id="player">
+    </div>
+
+    <div class="title">
+      <h3>Black Panther</h3>
+      <span></span>
+
+      <i class="fas fa-play ic-play"></i>
+      <i class="fas fa-plus ic-plus"></i>
+    </div>
+
+    <div class="description">
+      <p>When young King T'Challa is Drawn into conflit with an old foe that puts his homeland wakanda and the entire world at risk, he msut release Black Panther's full power to save them.</p>
+    </div>
+
+    <div class="time">
+      <p>2h 3min <span>2020</span></p>
+      <i class="far fa-comment-alt"></i>
+
+    </div>
+
+  </div>
+
+  <div class="background"></div>
+</div>
+</body>
   <script>
-    /* Demo purposes only */
-$(".hover").mouseleave(
-  function() {
-    $(this).removeClass("hover");
-  }
-);
+    var player;
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        videoId: 'xjDjIWPwcPU'
+
+      });
+    }
+    
+    $(document).on('mouseover', '#player', function() {
+      player.playVideo();
+    });
+    $(document).on('mouseout', '#player', function() {
+      player.pauseVideo();
+    });
   </script>
-  
+
+
 </html>
