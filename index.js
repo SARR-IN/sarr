@@ -1,262 +1,218 @@
-/**
-* Template Name: Folio - v4.7.0
-* Template URL: https://bootstrapmade.com/folio-bootstrap-portfolio-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-(function() {
-  "use strict";
+$(document).ready(function () {
+  // typing animation
+  (function ($) {
+    $.fn.writeText = function (content) {
+      var contentArray = content.split(""),
+        current = 0,
+        elem = this;
+      setInterval(function () {
+        if (current < contentArray.length) {
+          elem.text(elem.text() + contentArray[current++]);
+        }
+      }, 80);
+    };
+  })(jQuery);
 
-  /**
-   * Easy selector helper function
-   */
-  const select = (el, all = false) => {
-    el = el.trim()
-    if (all) {
-      return [...document.querySelectorAll(el)]
-    } else {
-      return document.querySelector(el)
-    }
-  }
+  // input text for typing animation
+  $("#holder").writeText("WEB DESIGNER + FRONT-END DEVELOPER");
 
-  /**
-   * Easy event listener function
-   */
-  const on = (type, el, listener, all = false) => {
-    let selectEl = select(el, all)
-    if (selectEl) {
-      if (all) {
-        selectEl.forEach(e => e.addEventListener(type, listener))
-      } else {
-        selectEl.addEventListener(type, listener)
-      }
-    }
-  }
+  // initialize wow.js
+  new WOW().init();
 
-  /**
-   * Easy on scroll event listener 
-   */
-  const onscroll = (el, listener) => {
-    el.addEventListener('scroll', listener)
-  }
+  // Push the body and the nav over by 285px over
+  var main = function () {
+    $(".fa-bars").click(function () {
+      $(".nav-screen").animate(
+        {
+          right: "0px"
+        },
+        200
+      );
 
-  /**
-   * Navbar links active state on scroll
-   */
-  let navbarlinks = select('#navbar .scrollto', true)
-  const navbarlinksActive = () => {
-    let position = window.scrollY + 200
-    navbarlinks.forEach(navbarlink => {
-      if (!navbarlink.hash) return
-      let section = select(navbarlink.hash)
-      if (!section) return
-      if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
-        navbarlink.classList.add('active')
-      } else {
-        navbarlink.classList.remove('active')
-      }
-    })
-  }
-  window.addEventListener('load', navbarlinksActive)
-  onscroll(document, navbarlinksActive)
-
-  /**
-   * Scrolls to an element with header offset
-   */
-  const scrollto = (el) => {
-    let header = select('#header')
-    let offset = header.offsetHeight
-
-    if (!header.classList.contains('header-scrolled')) {
-      offset -= 16
-    }
-
-    let elementPos = select(el).offsetTop
-    window.scrollTo({
-      top: elementPos - offset,
-      behavior: 'smooth'
-    })
-  }
-
-  /**
-   * Toggle .header-scrolled class to #header when page is scrolled
-   */
-  let selectHeader = select('#header')
-  if (selectHeader) {
-    const headerScrolled = () => {
-      if (window.scrollY > 100) {
-        selectHeader.classList.add('header-scrolled')
-      } else {
-        selectHeader.classList.remove('header-scrolled')
-      }
-    }
-    window.addEventListener('load', headerScrolled)
-    onscroll(document, headerScrolled)
-  }
-
-  /**
-   * Back to top button
-   */
-  let backtotop = select('.back-to-top')
-  if (backtotop) {
-    const toggleBacktotop = () => {
-      if (window.scrollY > 100) {
-        backtotop.classList.add('active')
-      } else {
-        backtotop.classList.remove('active')
-      }
-    }
-    window.addEventListener('load', toggleBacktotop)
-    onscroll(document, toggleBacktotop)
-  }
-
-  /**
-   * Mobile nav toggle
-   */
-  on('click', '.mobile-nav-toggle', function(e) {
-    select('#navbar').classList.toggle('navbar-mobile')
-    this.classList.toggle('bi-list')
-    this.classList.toggle('bi-x')
-  })
-
-  /**
-   * Mobile nav dropdowns activate
-   */
-  on('click', '.navbar .dropdown > a', function(e) {
-    if (select('#navbar').classList.contains('navbar-mobile')) {
-      e.preventDefault()
-      this.nextElementSibling.classList.toggle('dropdown-active')
-    }
-  }, true)
-
-  /**
-   * Scrool with ofset on links with a class name .scrollto
-   */
-  on('click', '.scrollto', function(e) {
-    if (select(this.hash)) {
-      e.preventDefault()
-
-      let navbar = select('#navbar')
-      if (navbar.classList.contains('navbar-mobile')) {
-        navbar.classList.remove('navbar-mobile')
-        let navbarToggle = select('.mobile-nav-toggle')
-        navbarToggle.classList.toggle('bi-list')
-        navbarToggle.classList.toggle('bi-x')
-      }
-      scrollto(this.hash)
-    }
-  }, true)
-
-  /**
-   * Scroll with ofset on page load with hash links in the url
-   */
-  window.addEventListener('load', () => {
-    if (window.location.hash) {
-      if (select(window.location.hash)) {
-        scrollto(window.location.hash)
-      }
-    }
-  });
-
-  /**
-   * Hero type effect
-   */
-  const typed = select('.typed')
-  if (typed) {
-    let typed_strings = typed.getAttribute('data-typed-items')
-    typed_strings = typed_strings.split(',')
-    new Typed('.typed', {
-      strings: typed_strings,
-      loop: true,
-      typeSpeed: 100,
-      backSpeed: 50,
-      backDelay: 2000
+      $("body").animate(
+        {
+          right: "285px"
+        },
+        200
+      );
     });
-  }
 
-  /**
-   * Testimonials slider
-   */
-  new Swiper('.services-slider', {
-    speed: 600,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    slidesPerView: 'auto',
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    },
-    breakpoints: {
-      320: {
-        slidesPerView: 1,
-        spaceBetween: 20
-      },
-      768: {
-        slidesPerView: 2,
-        spaceBetween: 20
-      },
-      1200: {
-        slidesPerView: 4,
-        spaceBetween: 20
+    // Then push them back */
+    $(".fa-times").click(function () {
+      $(".nav-screen").animate(
+        {
+          right: "-285px"
+        },
+        200
+      );
+
+      $("body").animate(
+        {
+          right: "0px"
+        },
+        200
+      );
+    });
+
+    $(".nav-links a").click(function () {
+      $(".nav-screen").animate(
+        {
+          right: "-285px"
+        },
+        500
+      );
+
+      $("body").animate(
+        {
+          right: "0px"
+        },
+        500
+      );
+    });
+  };
+
+  $(document).ready(main);
+
+  // initiate full page scroll
+
+  $("#fullpage").fullpage({
+    scrollBar: true,
+    responsiveWidth: 400,
+    navigation: true,
+    navigationTooltips: ["home", "about", "portfolio", "contact", "connect"],
+    anchors: ["home", "about", "portfolio", "contact", "connect"],
+    menu: "#myMenu",
+    fitToSection: false,
+
+    afterLoad: function (anchorLink, index) {
+      var loadedSection = $(this);
+
+      //using index
+      if (index == 1) {
+        /* add opacity to arrow */
+        $(".fa-chevron-down").each(function () {
+          $(this).css("opacity", "1");
+        });
+        $(".header-links a").each(function () {
+          $(this).css("color", "white");
+        });
+        $(".header-links").css("background-color", "transparent");
+      } else if (index != 1) {
+        $(".header-links a").each(function () {
+          $(this).css("color", "black");
+        });
+        $(".header-links").css("background-color", "white");
+      }
+
+      //using index
+      if (index == 2) {
+        /* animate skill bars */
+        $(".skillbar").each(function () {
+          $(this)
+            .find(".skillbar-bar")
+            .animate(
+              {
+                width: $(this).attr("data-percent")
+              },
+              2500
+            );
+        });
       }
     }
   });
 
-  /**
-   * Porfolio isotope and filter
-   */
-  window.addEventListener('load', () => {
-    let portfolioContainer = select('.portfolio-container');
-    if (portfolioContainer) {
-      let portfolioIsotope = new Isotope(portfolioContainer, {
-        itemSelector: '.portfolio-item',
-        layoutMode: 'fitRows'
-      });
+  // move section down one
+  $(document).on("click", "#moveDown", function () {
+    $.fn.fullpage.moveSectionDown();
+  });
 
-      let portfolioFilters = select('#portfolio-flters li', true);
+  // fullpage.js link navigation
+  $(document).on("click", "#skills", function () {
+    $.fn.fullpage.moveTo(2);
+  });
 
-      on('click', '#portfolio-flters li', function(e) {
-        e.preventDefault();
-        portfolioFilters.forEach(function(el) {
-          el.classList.remove('filter-active');
+  $(document).on("click", "#projects", function () {
+    $.fn.fullpage.moveTo(3);
+  });
+
+  $(document).on("click", "#contact", function () {
+    $.fn.fullpage.moveTo(4);
+  });
+
+  // smooth scrolling
+  $(function () {
+    $("a[href*=#]:not([href=#])").click(function () {
+      if (
+        location.pathname.replace(/^\//, "") ==
+          this.pathname.replace(/^\//, "") &&
+        location.hostname == this.hostname
+      ) {
+        var target = $(this.hash);
+        target = target.length
+          ? target
+          : $("[name=" + this.hash.slice(1) + "]");
+        if (target.length) {
+          $("html,body").animate(
+            {
+              scrollTop: target.offset().top
+            },
+            700
+          );
+          return false;
+        }
+      }
+    });
+  });
+
+  //ajax form
+  $(function () {
+    // Get the form.
+    var form = $("#ajax-contact");
+
+    // Get the messages div.
+    var formMessages = $("#form-messages");
+
+    // Set up an event listener for the contact form.
+    $(form).submit(function (e) {
+      // Stop the browser from submitting the form.
+      e.preventDefault();
+
+      // Serialize the form data.
+      var formData = $(form).serialize();
+
+      // Submit the form using AJAX.
+      $.ajax({
+        type: "POST",
+        url: $(form).attr("action"),
+        data: formData
+      })
+        .done(function (response) {
+          // Make sure that the formMessages div has the 'success' class.
+          $(formMessages).removeClass("error");
+          $(formMessages).addClass("success");
+
+          // Set the message text.
+          $(formMessages).text(response);
+
+          // Clear the form.
+          $("#name").val("");
+          $("#email").val("");
+          $("#message").val("");
+        })
+        .fail(function (data) {
+          // Make sure that the formMessages div has the 'error' class.
+          $(formMessages).removeClass("success");
+          $(formMessages).addClass("error");
+
+          // Set the message text.
+          if (data.responseText !== "") {
+            $(formMessages).text(data.responseText);
+          } else {
+            $(formMessages).text(
+              "Oops! An error occured and your message could not be sent."
+            );
+          }
         });
-        this.classList.add('filter-active');
-
-        portfolioIsotope.arrange({
-          filter: this.getAttribute('data-filter')
-        });
-
-      }, true);
-    }
-
+    });
   });
-
-  /**
-   * Initiate portfolio lightbox 
-   */
-  const portfolioLightbox = GLightbox({
-    selector: '.portfolio-lightbox'
-  });
-
-  /**
-   * Portfolio details slider
-   */
-  new Swiper('.portfolio-details-slider', {
-    speed: 400,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    }
-  });
-
-})()
+});
