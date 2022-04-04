@@ -138,10 +138,19 @@ body {
 }
 .main {
    color: white;
-   background-image: url('https://images.unsplash.com/photo-1638017500404-9c73c9009d76?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTE3fHxkYXJrJTIwYmFrZ3JvdW5kJTIwaW1hZ2V8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60');
-   height: 100%;
-   width: 100%;
+    background-image: url(https://images.unsplash.com/photo-1638017500404-9c73c9009d76?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTE3fHxkYXJrJTIwYmFrZ3JvdW5kJTIwaW1hZ2V8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60);
+    background-size: contain;
+    padding: 4px;
+    height: 400px;
    }
+   img {
+    border: 2px solid white;
+    border-radius: 25px;
+    height: 250px;
+    padding: 5px;
+    float: right;
+    margin: 4px;
+}
 @media screen and (max-width: 600px) {
   .topnav2 a:not(:first-child), .dropdown .dropbtn {
     display: none;
