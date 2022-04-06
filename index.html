@@ -161,6 +161,21 @@ body {
     color: white;
           margin: 0px 1px;
 }
+   button.btn-2 {
+    height: 22px;
+    margin: 12px 8px;
+    width: 35px;
+    border: 1px solid white;
+    border-radius: 12px;
+    background: #4D77FF;
+}
+button.btn-2 :hover {
+  background-color: #305ae1;
+}
+.dark-mode {
+  background-color: black;
+  color: #4D77FF;
+}
 @media screen and (max-width: 600px) {
   .topnav2 a:not(:first-child), .dropdown .dropbtn {
     display: none;
@@ -215,6 +230,7 @@ body {
   <a class="active" href="#home">Home</a>
   <a href="#about">About</a>
   <a href="#contact">Contact</a>
+   <button class="btn-2" onclick="myFunction()"><i class="fa fa-eye"></i></button>
   <div class="search-container">
     <form action="/action_page.php">
       <input type="text" placeholder="Search.." name="search">
@@ -259,6 +275,10 @@ body {
   } else {
     x.className = "topnav";
   }
+}
+   function myFunction() {
+   var element = document.body;
+   element.classList.toggle("dark-mode");
 }
   </script>
 </body>
